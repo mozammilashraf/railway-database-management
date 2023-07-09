@@ -1,0 +1,96 @@
+mixin resultCardTempelate
+  .result-tempelate-item(data-train-type=trainTypes[i])
+    .train-result-card-heading.result-tempelate-display-grid
+      .train-name-number.pull-left
+        strong
+          span.train-name #{trainNames[i]}
+          |  ( 
+          span.train-number #{trainNumbers[i]}
+          | )
+      .train-runs-on.pull-center
+        | Runs On:  
+        - var days= ['S','M','T','W','T','F','S']
+        each val, index in days
+          if trainRunnigDays[i][index] == 0
+            span.train-running-day.light-gray #{val}
+          else
+            span.train-running-day #{val}
+          |  
+      .train-schedule-link.pull-right(data-train-number=trainNumbers[i] data-train-name=trainNames[i] data-train-running-day=trainRunnigDays[i].toString())
+        a(onclick='showTrainTimetable(this)') Train Schedule
+    .train-result-card-timing.result-tempelate-display-grid
+      .from-station-detail.pull-left
+        strong
+          span.departure-time #{trainDepartureTimes[i]}
+          |  |  
+        span.departure-station  #{trainDepartureStations[i]}
+        |  |  
+        span.departure-date   #{trainDepartureDates[i]}
+      .travel-time.pull-center
+        | ------ 
+        span.travel-time-value #{trainTravelTimes[i]}
+        |  ------
+      .to-station-detail.pull-right
+        strong
+          span.arrival-time #{trainArrivalTimes[i]}
+          |  |  
+        span.arrival-station #{trainArrivalStations[i]}
+        |  |  
+        span.arrival-date #{trainArrivalDates[i]}
+    .train-result-card-classes.result-tempelate-display-flex
+      each trainClassTypeName in trainClassTypeNames[i]
+        //- +classNameTempelate
+        .result-class-item #{trainClassTypeName}      
+        
+mixin classNameTempelate
+  .result-class-item #{trainClassTypeName}
+  
+mixin resultCardTempelateRaw
+  .result-tempelate-item
+    .train-result-card-heading.result-tempelate-display-grid
+      .train-name-number.pull-left
+        strong
+          span.train-name Train Name
+          |  ( 
+          span.train-number Train Number
+          | )
+      .train-runs-on.pull-center
+        | Runs On:  
+        span.train-running-day S
+        |  
+        span.train-running-day M
+        |  
+        span.train-running-day T
+        |  
+        span.train-running-day W
+        |  
+        span.train-running-day T
+        |  
+        span.train-running-day F
+        |  
+        span.train-running-day S
+      .train-schedule-link.pull-right
+        a(onclick='showTrainTimetable(this)') Train Schedule
+    .train-result-card-timing.result-tempelate-display-grid
+      .from-station-detail.pull-left
+        strong
+          span.departure-time Train Departure Time
+          |  |  
+        span.departure-station  Train Departure Station
+        |  |  
+        span.departure-date   Trian Departure Date
+      .travel-time.pull-center
+        | ------ 
+        span.travel-time-value Train Travel Times
+        |  ------
+      .to-station-detail.pull-right
+        strong
+          span.arrival-time Train Arrival Time
+          |  |  
+        span.arrival-station Train Arrival Station
+        |  |  
+        span.arrival-date Trian Arrival Date
+    .train-result-card-classes.result-tempelate-display-flex    
+        
+mixin classNameTempelateRaw
+  .result-class-item Train ClassType Name

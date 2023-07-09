@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Agent Sign In Request
+    link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+    link(rel='stylesheet', href='/stylesheets/agent-request-login-styles.css')
+  body
+    header
+      .header-item.secondry-logo
+        img(src='/images/secondry-logo.png')
+      .header-item.center-header-item
+        .home-button
+          a(href='/')
+            button Home
+      .header-item.primary-logo
+        img(src='/images/logo.png')
+    main
+      #login-registration-div
+        .login-div
+          h1 Agent Sign In Request Form
+          form(method='POST' action='')
+            // <label for="email">Email</label>
+            .form-group
+              //- input#username.item(type='text', name='username', placeholder='Username *', required='')
+              input#email.item(type='email', name='email', placeholder='Email *', required='')
+            // <label for="agent-name">Your Name</label>
+            .form-group
+              input#username.item(type='text', name='username', placeholder='Username *', required='')
+            // <label for="agent-name">Your Name</label>
+            .form-group
+              input#agent-first-name.item(type='text', name='first-name', placeholder='First Name *', required='')
+            .form-group
+              input#agent-last-name.item(type='text',name='last-name', placeholder='LastName')
+            .form-group
+              input#agent-phone-number.item(type='tel',name='phone-number', placeholder='Ph. Number (Optional)')
+            .form-group
+              input#agent-dob.item(type='text',name='date-of-birth', placeholder='DOB (Optional)', onfocus="(this.type='date')")
+            .form-group
+              input#password.item(type='password',name='password', placeholder='Password', required='')
+            .form-group
+              input#confirm-password.item(type='password',name='confirm-password', placeholder='Re-Type Password', required='')
+            // <a class="forgot-password" href="">Forgot Password</a>
+            .form-group.btn-group
+              // <button type="submit" class="btn create-account">Login</button>
+              button.btn.request-login(type='submit') Request Sign In
+              div
+                label(for='') Already An Agent &#x279D; 
+                a(href='/agent-login')
+                  button.btn.login-btn(type='button') Sign In

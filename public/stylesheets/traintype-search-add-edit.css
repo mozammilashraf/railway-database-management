@@ -1,0 +1,44 @@
+.traintype-search-add-edit {
+  color: #1967d2;
+  background-color: #e8f0fe;
+}
+.form-input-row-container {
+  width: 1000px;
+}
+
+.form-input-row-head {
+  display: grid;
+  height: 35px;
+  grid-template-columns: 1fr;
+  row-gap: 5px;
+}
+.form-input-row {
+  display: grid;
+  height: 40px;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr;
+  padding-bottom: 5px;
+}
+
+.add-new-field {
+  margin-left: 10px;
+  height: 25px;
+  width: 25px;
+}
+
+/* Search - Edit CSS */
+
+table {
+  margin: 20px auto;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid #000;
+}
+
+th,
+td {
+  padding: 5px;
+}

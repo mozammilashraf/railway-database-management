@@ -1,0 +1,57 @@
+extends agent-home
+
+//- block stylesheets
+//-   link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+
+block scripts
+  script(src="/javascripts/agent-script.js" defer)
+
+block mainContent
+  +agentSidebar
+  .input-container
+    .input-heading-item
+      h Station Details
+    .input-form
+      div(class="input-state-data" id="input-state-data-0")
+        input(
+          class="input-class"
+          type="text"
+          list=""
+          placeholder="State Code"
+          name="state-code"
+          required 
+        )
+        input(
+          class="input-class"
+          type="text"
+          list=""
+          placeholder="State Name"
+          name="state-name"
+          required
+        )
+        input(
+          class="input-class"
+          type="text"
+          list=""
+          placeholder="State"
+          name="state"
+          required
+        )
+
+        input(
+          class="input-class"
+          type="text"
+          list=""
+          placeholder="Zone"
+          name="zone"
+          required
+        )
+        img(
+          id="input-state-data-bin-0"
+          src="/images/dustbin.png"
+          onclick="deleteInputStateForm(this.id)"
+        )
+    div(class="add-new-field" onclick="addNewInputStateForm()")
+      img(src="/images/add-button.png")
+    button(id='submit-station-btn') Submit
+  

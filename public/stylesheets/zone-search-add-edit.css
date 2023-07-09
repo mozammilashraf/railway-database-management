@@ -1,0 +1,32 @@
+.zone-search-add-edit {
+  color: #1967d2;
+  background-color: #e8f0fe;
+}
+.input-container-row {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: 0.5fr 0.5fr 30px;
+  padding-bottom: 5px;
+}
+
+.add-new-field {
+  margin-left: 10px;
+  height: 25px;
+  width: 25px;
+}
+
+table {
+  margin: 20px auto;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid #000;
+}
+
+th,
+td {
+  padding: 5px;
+}

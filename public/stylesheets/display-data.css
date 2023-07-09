@@ -1,0 +1,114 @@
+:root {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+html {
+  background: #f7f7f7;
+}
+body {
+  background: white;
+  margin: 0 auto;
+}
+
+img {
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+header,
+footer {
+  background-color: lightblue;
+  height: 100px;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  column-gap: 10px;
+  padding: 10px 20px;
+}
+.header-item {
+  background-color: white;
+  /* background-image: url("/images/home-background.jpg"); */
+}
+
+.center-header-item {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  column-gap: 10px;
+  /* background-color: aliceblue; */
+}
+.agent-login {
+  padding: 10px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.user-login-register {
+  display: grid;
+  /* flex-direction: row; */
+  padding: 10px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  row-gap: 10px;
+}
+
+.secondry-logo {
+  background-image: url("../public/images/secondry-logo.png");
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+}
+.primary-logo {
+  background-image: url("../public/images/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+}
+
+main {
+  background-color: rgb(183, 231, 215);
+  background-size: cover;
+  height: 600px;
+  /* padding-top: 50px; */
+  display: grid;
+  grid-template-columns: minmax(300px, 20vw) 1fr;
+}
+.sidebar {
+  background-color: aliceblue;
+}
+
+.dislpay-data-container {
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.station-data-row-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-rows: 20px;
+  background-color: lightpink;
+  padding: 7px 0;
+  /* border-width: 10px;
+  border-width: 10px; */
+  border: 10px;
+}
+.station-data-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-rows: 20px;
+  background-color: lightpink;
+  padding: 7px 0;
+  /* border-width: 10px;
+  border-width: 10px; */
+  border: 10px;
+}
+
+#column-name {
+  text-transform: uppercase;
+  font-weight: 700;
+}

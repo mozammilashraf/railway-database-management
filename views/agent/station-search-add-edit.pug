@@ -1,0 +1,78 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/station-search-add-edit.css')
+
+block scripts
+  script(src='/javascripts/station-search-add-edit.js', defer)
+
+
+block mainContent
+  .main-content
+    section#add-new-section
+      h1 Add New Station
+      form#station-form.input-container(name='station-form', action='/agent/station-input')
+        // method="POST"
+        // action="http://localhost:3000/agent/state-input"
+        .form-input-row-container
+          .input-container-row
+            //
+              <div class="form-input-row-head">
+              <div class="form-head-child">State</div>
+              </div>
+            .form-input-row
+              input#station-name-input-value(type='text', name='station-name-input-value', maxlength='40', placeholder='Station Name', required='')
+              input#station-code-input-value(type='text', name='station-code-input-value', maxlength='30', placeholder='Station Code', required='')
+              select#station-state-input-value(name='station-state-input-value')
+              select#station-zone-input-value(name='station-zone-input-value')
+              img(src='/images/dustbin.png', onclick='deleteInputFormRow(this)')
+        .add-new-field(onclick='addNewInputFormRow()')
+          img(src='/images/add-button.png')
+        button(type='reset') Reset
+        button#submit-station-btn(type='submit')
+          // onclick="submitState();"
+          | Submit
+        //
+          <input
+          type="submit"
+          value="Submit"
+          name="submit"
+          onClick="return confirmSubmit()"
+          />
+    hr
+    section#search-section
+      #station-search-form.input-container(name='station-search-form')
+        // action="http://localhost:3000/agent/state/"
+        label(for='search-text') Search Station : 
+        input#search-text(type='text', max='30', required='', name='search-text')
+        button(type='reset', name='search-text') Reset
+        button#search-btn(type='button', onclick='searchStation()')
+          | Search
+        //
+          <input
+          type="submit"
+          value="Submit"
+          name="submit"
+          onClick="return confirmSubmit()"
+          />
+      section#update-row(hidden='')
+        input#update-station-name-input(type='text', name='update-station-name-input', maxlength='40', placeholder='New Station Name', required='')
+        input#update-station-code-input(type='text', name='update-station-code-input', maxlength='40', placeholder='New Station Code', required='')
+        select#update-station-state-input(name='update-station-state-input')
+        select#update-station-zone-input(name='update-station-zone-input')
+        button#update-row-btn Update
+      button#showAll-Btn(type='button', onclick='showAllStation()')
+        | Show 50 stations
+      .station-data-container
+        table#station-table
+          thead
+            tr
+              td Station Name
+              td Station Code
+              td State
+              td Zone
+              td Edit
+              td Delete
+          tbody
+  

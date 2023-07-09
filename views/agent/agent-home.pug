@@ -1,0 +1,62 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/agent-home-styles.css')
+
+block scripts
+  //- script(src='')
+  script(src='/javascripts/agent-home.js', defer)
+
+
+block mainContent
+  .main-content
+    h1 Welcome #{user.first_name}
+    h2 About
+    form(id='update-details-form' method="POST" action='/agent/update-details')
+      - var username = user.username
+      - var firstname = user.first_name
+      - var lastname = user.last_name
+      - var email = user.email
+      - var phoneNo = user.phone_no?.toString()
+      - var accessLevel = user.access_level
+      .dashboard
+        label(for="username") Username
+        input(id='username' name='username' type="text" required disabled value=username) 
+
+        label(for="first-name") First Name 
+        input(id='first-name' name='first-name' type="text" required disabled value=firstname) 
+
+        label(for="last-name") Last Name 
+        input(id='last-name' name='last-name' type="text" disabled value=lastname) 
+        
+        label(for="email") Email 
+        input(id='email' type="email" disabled  value=email) 
+        
+        label(for="phone-number") Phone Number 
+        input(id='phone-number' name='phone-number' type="text" disabled required value=phoneNo) 
+        
+        - var d = new Date(user.DOB)
+
+        - var dateOfBirth =  d.getFullYear().toString().padStart(4, '0') + '-' + (d.getMonth()+1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0');
+        label(for="date-of-birth") DOB 
+        input(id='date-of-birth' name='date-of-birth' type="date" required disabled value=dateOfBirth) 
+        
+        label(for="access-level") Access Level 
+        input(id='access-level' type="number" disabled value=accessLevel) 
+      button(type="button" id='edit' onclick='onEdit()') Edit
+      button(type="button" id='change-password-btn' onclick="onChangePassword()") Change Password
+      button(type="submit" id='submit' hidden ) Submit
+
+    form(id='change-password-form' method="POST" action='/agent/change-password' hidden)
+      .dashboard
+        label(for="current-password") Current Password
+        input(id='current-password' name='current-password' type="password" required) 
+
+        label(for="new-password") New Password
+        input(id='new-password' name='new-password' type="password" required) 
+
+        label(for="retype-new-password") Retype New Password
+        input(id='retype-new-password' name='retype-new-password' type="password" required) 
+
+      button(type="submit" id='submit-password') Submit

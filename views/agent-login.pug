@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Agent Login
+    link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+    link(rel='stylesheet', href='/stylesheets/agent-login-styles.css')
+  body
+    header
+      .header-item.secondry-logo
+        img(src='/images/secondry-logo.png')
+      .header-item.center-header-item
+        .home-button
+          a(href='/')
+            button Home
+        //- - const keys = Object.keys(flash)  
+        //- - const values = Object.values(flash)  
+        //- if keys.length > 0
+        //-   p= values
+        
+        //- - var temp = messages?.error
+        //- p=temp
+        if messages.error 
+          p=messages.error 
+      .header-item.primary-logo
+        img(src='/images/logo.png')
+    main
+      #login-registration-div
+        .login-div
+          form(method='POST' action='')
+            h1 Agent Login
+            .form-group
+              //- input#username.item(type='text', name='username', placeholder='Username', required='')
+              input#username.item(type='email', name='email', placeholder='Email', required='')
+            .form-group
+              input#password.item(type='password',name='password', placeholder='Password', required='')
+            a.forgot-password(href='') Forgot Password
+            .form-group.btn-group
+              button.btn.login-btn(type='submit') Login
+              a(href='/agent-request-login')
+                button.btn.request-login(type='button') Request Sign In

@@ -1,0 +1,24 @@
+.agent-home {
+  color: #1967d2;
+  background-color: #e8f0fe;
+}
+.agent-home:hover {
+  /* color: #1967d2; */
+  background-color: #e8f0fe;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard {
+  margin: 0 auto;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  font-size: larger;
+  grid-template-rows: repeat(7, 40px);
+}

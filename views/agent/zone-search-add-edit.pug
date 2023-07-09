@@ -1,0 +1,74 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/zone-search-add-edit.css')
+
+block scripts
+  script(src='/javascripts/zone-search-add-edit.js', defer)
+
+
+block mainContent
+  .main-content
+    section#add-new-section
+      h1 Add New Zone
+      form#zone-form.input-container(name='zone-form', action='/agent/zone-input')
+        // method="POST"
+        // action="http://localhost:3000/agent/state-input"
+        .form-input-row-container
+          .input-container-row
+            .zone-name-input
+              // <h id="sr-no">1.</h>
+              label(for='zone-name-input-value') Zone Name:
+              input#zone-name-input-value(type='text', maxlength='30', name='zone-name-input-value', required='')
+            .zone-code-input
+              // <h id="sr-no">1.</h>
+              label(for='zone-code-input-value') Zone Code:
+              input#zone-code-input-value(type='text', maxlength='30', name='zone-code-input-value', required='')
+            img(src='/images/dustbin.png', onclick='deleteInputFormRow(this)')
+        .add-new-field(onclick='addNewInputFormRow()')
+          img(src='/images/add-button.png')
+        button(type='reset') Reset
+        button#submit-zone-btn(type='submit')
+          // onclick="submitState();"
+          | Submit
+        //
+          <input
+          type="submit"
+          value="Submit"
+          name="submit"
+          onClick="return confirmSubmit()"
+          />
+    hr
+    section#search-section
+      #zone-search-form.input-container(name='zone-search-form')
+        // action="http://localhost:3000/agent/state/"
+        label(for='search-text') Search Zone : 
+        input#search-text(type='text', max='30', required='', name='search-text')
+        button(type='reset', name='search-text') Reset
+        button#search-btn(type='button', onclick='searchZone()')
+          | Search
+        //
+          <input
+          type="submit"
+          value="Submit"
+          name="submit"
+          onClick="return confirmSubmit()"
+          />
+      section#update-row(hidden='')
+        label(for='update-zone-name-input') New Zone Name
+        input#update-zone-name-input(name='update-zone-name-input')
+        label(for='update-zone-code-input') New Zone Code
+        input#update-zone-code-input(name='update-zone-code-input')
+        button#update-row-btn Update
+      button#showAll-Btn(type='button', onclick='showAllZone()')
+        | Show all zone
+      .zone-data-container
+        table#zone-table
+          thead
+            tr
+              td Zone Name
+              td Zone Code
+              td Edit
+              td Delete
+          tbody

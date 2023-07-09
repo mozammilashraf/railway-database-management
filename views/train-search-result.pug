@@ -1,0 +1,144 @@
+include mixins/_frontEnd
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Train Search Result
+    //- title= title 
+    link(rel='stylesheet', href='stylesheets/train-search-result.css')
+    script(src='javascripts/train-search-result.js', defer='')
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Barlow:ital@1&family=Roboto:wght@300&display=swap', rel='stylesheet')
+  body
+    header
+      .header-item.secondry-logo
+        img(src='/images/secondry-logo.png')
+      .header-item.center-header-item
+        .home-button
+          a(href='/')
+            button Home
+      .header-item.primary-logo
+        img(src='/images/logo.png')
+    div
+      form#search-train-form.search-train-container(method='POST', name='search-train-form', action='train-search-result')
+        datalist#station-list
+        input#from-station.search-train-item(type='text', placeholder='FROM', name='from-station', required='', list='station-list', oninput='handleStationList(this)', autocomplete='off', value=fromStation)
+        .exchange-from-to-img(onclick='onExchangeStation()')
+          img(src='/images/arrows.png', alt='')
+        input#to-station.search-train-item(type='text', placeholder='TO', name='to-station', required='', list='station-list', autocomplete='off', oninput='handleStationList(this)', value=toStation)
+        input#search-date.search-train-item(type='date', value= searchDate, required='', name='search-date')
+        select#class-type.search-train-item(name='class-type')
+          //- option All Class
+          option(value='all-classes') All Classes
+          each Class in allClasses
+            if classTypeSelected == Class.class_type_code
+              option(value=Class.class_type_code selected) #{Class.class_type_name}
+            else
+              option(value=Class.class_type_code) #{Class.class_type_name}
+
+          //- 
+            const classTypeList = document.getElementById("class-type");
+            let classTypeListHtml = `<option value="all-classes">All Classes</option>`; //`<input type="hidden" name="class-type-name" value="0" />`;
+            if (data.length === 0) {
+              console.log("No Class Type Data");
+            }
+
+            data.forEach(function ({ class_type_code, class_type_name }) {
+              classTypeListHtml += `<option value="${class_type_code}">${class_type_name}</option>`;
+            });
+        button.search-train-item Modify Search
+    .search-result-container
+      .filter-container
+        .filter-heading
+          h  Refine Results
+          button Reset Filter
+        .filter-class-container
+          h Journey Classes
+          button(onclick='selectAllClassFilter(this)') Select All
+          //- .filter-class-item
+          //-   input#AC-First(type='checkbox', name='AC-First')
+          //-   label(for='AC-First') AC First Class (1A)
+          
+        //- .filter-train-type-container
+        //-   h Train Type
+        //-   .filter-train-type-item
+        //-     input#Express(type='checkbox', name='Express')
+        //-     label(for='Express') Express
+        //
+          <div>Departure Time</div>
+          <div>Arrival Time</div>
+      .result-container
+        #result-meta-data.result-meta-data
+          span#number-of-results #{trainDataLength}
+          |  Results for
+          |  
+          strong
+            - var a = trainDepartureStations?.[0]
+            span#train-search-from-station #{a}
+            |    &#x279C;  
+            - var b = trainDepartureStations?.[0]
+            span#train-search-to-station #{b}
+            |  |    
+            span#current-date #{currentDate}
+        .sort-result-container
+          //- label.sort-result-item(for='sort-by') Sort By
+          //- select#sort-by.sort-result-item
+          //-   option Duration
+          //-   option Duration
+          //-   option Duration
+          //-   option Duration
+          .sort-result-item(style='flex-grow: 1')
+          button.sort-result-item(onclick="searchForPreviousDay()") Previous Day
+          button.sort-result-item(onclick="searchForNextDay()") Next Day
+        .result-tempelate-container
+          - var i = 0
+          while i < trainDataLength
+            +resultCardTempelate  
+            - i++  
+    dialog#modal.modal
+      h2
+        | Train Schedule
+        button.button.close-button Close
+      table.train-info-table
+        thead
+          tr
+            th Train Number
+            th Train Name
+            th From Stations
+            th Destination Station
+            th Runs On
+        tbody
+          tr
+            td Number
+            td Name
+            td Day
+      table.train-timetable-table
+        thead
+          tr
+            th.sr-no Sr. No.
+            th Station Code
+            th Station Name
+            th Arrival Time
+            th Departure Time
+            th
+              | Halt&nbsp;Time 
+              br
+              | (in&nbsp;minutes)
+            th
+              | Distance 
+              br
+              | (in KM)
+            th Day
+            th Platform
+        tbody
+
+    template#result-card-tempelate
+      +resultCardTempelateRaw
+    template#result-class-item-tempelate
+      +classNameTempelateRaw
+      //- .result-class-item Class Name
+  

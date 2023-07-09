@@ -1,0 +1,41 @@
+mixin agentHeader
+  .header-item.secondry-logo
+    img(src='/images/secondry-logo.png')
+  .header-item.center-header-item
+    .home-button
+      a(href='/')
+        button Home
+    .logout-button
+      a(href='/agent-logout')
+        button Logout
+    p=user.email
+    
+    //- if messages.error 
+    //-   p=messages.error
+  .header-item.primary-logo
+    img(src='/images/logo.png')
+
+
+
+mixin agentSidebar
+  nav.sidebar
+    a(href='/agent')
+      .sidebar-item.agent-home Home
+    a(href='/agent/state-search-add-edit')
+      .sidebar-item.state-search-add-edit State Search / Add / Edit
+    a(href='/agent/zone-search-add-edit')
+      .sidebar-item.zone-search-add-edit Zone Search / Add / Edit
+    a(href='/agent/traintype-search-add-edit')
+      .sidebar-item.traintype-search-add-edit Train Type Search / Add / Edit
+    a(href='/agent/classType-search-add-edit')
+      .sidebar-item.classType-search-add-edit Class Type Search / Add / Edit
+    a(href='/agent/station-search-add-edit')
+      .sidebar-item.station-search-add-edit Station Search / Add / Edit
+    a(href='/agent/train-add')
+      .sidebar-item.train-add Add new Train
+    a(href='/agent/train-search-edit')
+      .sidebar-item.train-search-edit Train Search / Edit
+    a(href='/agent/train-timetable-input')
+      .sidebar-item.train-timetable-input Train Timetable Add / Edit
+    a(href='/agent/signup-request-table')
+      .sidebar-item.signup-request-table Sign Up Request Table

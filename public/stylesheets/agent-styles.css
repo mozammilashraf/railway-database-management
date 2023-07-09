@@ -1,0 +1,110 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+:root {
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+}
+html {
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+img {
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+header,
+footer {
+  background-color: lightblue;
+  height: 120px;
+}
+
+header {
+  display: flex;
+}
+.header-item {
+  margin: 10px;
+  padding: 5px;
+}
+.secondry-logo {
+  width: 100px;
+}
+.center-header-item {
+  flex-grow: 1;
+  align-self: center;
+}
+.primary-logo {
+  width: 100px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(300px, 20%) 80%;
+}
+
+.sidebar {
+  /* background-color: bisque; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  width: 80%;
+}
+.sidebar-item {
+  height: 40px;
+  /* width: 80%; */
+  padding-left: 15px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  /* text-align: left; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.sidebar-item:hover {
+  background-color: #f5f5f5;
+}
+.sidebar-item:active {
+  background-color: #d6d6d6;
+}
+.sidebar a {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+.main-content {
+  /*  temp color */
+  background-color: #f5f5f5;
+
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  /* align-items: center; */
+  /* padding-left: 15px; */
+  /* margin-top: 50px; */
+  padding: 50px 0 0 15px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

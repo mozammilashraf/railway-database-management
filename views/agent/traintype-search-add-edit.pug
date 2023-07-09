@@ -1,0 +1,67 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/traintype-search-add-edit.css')
+
+block scripts
+  script(src='/javascripts/traintype-search-add-edit.js', defer)
+
+
+block mainContent
+  .main-content
+    section#add-new-section
+      h1 Add New Train Type
+      form#traintype-form.input-container(name='traintype-form', action='/agent/traintype-input')
+        // method="POST"
+        // action="http://localhost:3000/agent/state-input"
+        .form-input-row-container
+          .input-container-row
+            //
+              <div class="form-input-row-head">
+              <div class="form-head-child">State</div>
+              </div>
+            .form-input-row
+              // <h id="sr-no">1.</h>
+              label(for='traintype-name-input-value') Train Type Name:
+              input#traintype-name-input-value(type='text', maxlength='30', name='traintype-name-input-value', required='')
+              label(for='traintype-code-input-value') Train Type Code:
+              input#traintype-code-input-value(type='text', maxlength='6', name='traintype-code-input-value', required='')
+              // <h id="sr-no">1.</h>
+        button(type='reset') Reset
+        button#submit-zone-btn(type='submit')
+          // onclick="submitState();"
+          | Submit
+        //
+          <input
+          type="submit"
+          value="Submit"
+          name="submit"
+          onClick="return confirmSubmit()"
+          />
+    hr
+    section#search-section
+      #traintype-search-form.input-container(name='traintype-search-form')
+        // action="http://localhost:3000/agent/state/"
+        label(for='search-text') Search Train Type : 
+        input#search-text(type='text', max='30', required='', name='search-text')
+        button(type='reset', name='search-text') Reset
+        button#search-btn(type='button', onclick='searchTrainType()')
+          | Search
+      section#update-row(hidden='')
+        label(for='update-traintype-name-input') New Train Type Name
+        input#update-traintype-name-input(name='update-traintype-name-input')
+        label(for='update-traintype-code-input') Train Type Code:
+        input#update-traintype-code-input(type='text', maxlength='6', name='update-traintype-code-input', required='')
+        button#update-row-btn Update
+      button#showAll-Btn(type='button', onclick='showAllTrainType()')
+        | Show all train type
+      .traintype-data-container
+        table#traintype-table
+          thead
+            tr
+              td Train Type Name
+              td Train Type Code
+              td Edit
+              td Delete
+          tbody

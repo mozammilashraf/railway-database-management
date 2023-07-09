@@ -1,0 +1,67 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/classtype-search-add-edit.css')
+
+block scripts
+  script(src='/javascripts/classtype-search-add-edit.js', defer)
+
+
+block mainContent
+  .main-content
+    section#add-new-section
+      h1 Add New Class Type
+      form#classtype-form.input-container(name='classtype-form', action='/agent/classtype-input')
+        // method="POST"
+        // action="http://localhost:3000/agent/state-input"
+        .form-input-row-container
+          .input-container-row
+            //
+              <div class="form-input-row-head">
+              <div class="form-head-child">State</div>
+              </div>
+            .form-input-row
+              // <h id="sr-no">1.</h>
+              label(for='classtype-name-input-value') Class Type Name:
+              input#classtype-name-input-value(type='text', maxlength='30', name='classtype-name-input-value', required='')
+              // <h id="sr-no">1.</h>
+              label(for='classtype-code-input-value') Class Type Code
+              input#classtype-code-input-value(type='text', maxlength='400', name='classtype-code-input-value', required='')
+        button(type='reset') Reset
+        button#submit-zone-btn(type='submit')
+          // onclick="submitState();"
+          | Submit
+        //
+          <input
+          type="submit"
+          value="Submit"
+          name="submit"
+          onClick="return confirmSubmit()"
+          />
+    hr
+    section#search-section
+      #classtype-search-form.input-container(name='classtype-search-form')
+        // action="http://localhost:3000/agent/state/"
+        label(for='search-text') Search Class Type : 
+        input#search-text(type='text', max='30', required='', name='search-text')
+        //- button(type='reset', name='search-text') Reset
+        button#search-btn(type='button', onclick='searchClassType()')
+          | Search
+      section#update-row(hidden='')
+        label(for='update-classtype-name-input') New Class Type Name
+        input#update-classtype-name-input(name='update-classtype-name-input')
+        label(for='update-classtype-code-input') New Class Type Code
+        input#update-classtype-code-input(name='update-classtype-code-input')
+        button#update-row-btn Update
+      button#showAll-Btn(type='button', onclick='showAllClassType()')
+        | Show all class type
+      .classtype-data-container
+        table#classtype-table
+          thead
+            tr
+              td Class Type Name
+              td Class Type Code
+              td Edit
+              td Delete
+          tbody

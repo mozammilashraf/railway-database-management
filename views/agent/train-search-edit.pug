@@ -1,0 +1,83 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/train-search-edit.css')
+
+block scripts
+  script(src='/javascripts/train-search-edit.js', defer)
+
+
+block mainContent
+  .main-content
+    section#search-train
+      #train-search-form.input-container(name='train-search-form')
+        // action="http://localhost:3000/agent/state/"
+        label(for='search-text') Search Train : 
+        input#search-text(type='text', max='30', required='', name='search-text')
+        button#search-btn(type='button', onclick='searchTrain()')
+          | Search
+      button#showAll-Btn(type='button', onclick='showAllTrain()')
+        | Show all Train
+    section#update-section(hidden='')
+      h1 Update New Train
+      form#train-update-form.input-container(name='train-update-form', method='POST', action='/agent/train/update')
+        input#train-id(type='hidden', name='train-id')
+        ul
+          li
+            label(for='new-train-number') New Train number : 
+            input#new-train-number(type='number', name='new-train-number', required='')
+          li
+            label(for='new-return-train-number')
+              | New Return train number :
+            input#new-return-train-number(type='number', name='new-return-train-number', required='')
+          li
+            label(for='new-train-name') New Train Name : 
+            input#new-train-name(type='text', name='new-train-name', required='')
+          li
+            label Train Running Days
+            ol
+              // <input type="hidden" name="day" value="0" />
+              li
+                input#sunday(type='checkbox', checked='', name='day', value='1')
+                label(for='sunday') Sunday
+              li
+                input#monday(type='checkbox', checked='', name='day', value='2')
+                label(for='monday') Monday
+              li
+                input#tuesday(type='checkbox', checked='', name='day', value='3')
+                label(for='tuesday') Tuesday
+              li
+                input#wednesday(type='checkbox', checked='', name='day', value='4')
+                label(for='wednesday') Wednesday
+              li
+                input#thursday(type='checkbox', checked='', name='day', value='5')
+                label(for='thursday') Thursday
+              li
+                input#friday(type='checkbox', checked='', name='day', value='6')
+                label(for='friday') Friday
+              li
+                input#saturday(type='checkbox', checked='', name='day', value='7')
+                label(for='saturday') Saturday
+          li
+            label Has Class types : 
+            ol#class-type
+          li
+            label(for='train-type') Train Type
+            select#train-type(name='train-type')
+          button(type='reset', form='train-update-form') Reset
+          button#submit-btn(type='submit') Submit
+    section.train-data-container
+      table#train-table
+        thead
+          tr
+            td Train No
+            td Return Train No
+            td Train Name
+            td Runs On
+            td Train Type
+            td Has Classes
+            td Edit
+            td Delete
+        tbody
+  

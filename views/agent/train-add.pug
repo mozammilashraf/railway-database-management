@@ -1,0 +1,63 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/train-add.css')
+
+block scripts
+  script(src='/javascripts/train-add.js', defer)
+
+
+block mainContent
+  .main-content
+    section#add-new-section
+      h1 Add New Train
+      form#train-add-form.input-container(name='train-add-form', method='POST', action='/agent/train-add')
+        ul
+          li
+            label(for='train-number') Train number : 
+            input#train-number(type='number', name='train-number', required='')
+          li
+            label(for='return-train-number') Return train number : 
+            input#return-train-number(type='number', name='return-train-number', required='')
+          li
+            label(for='train-name') Train Name : 
+            input#train-name(type='text', name='train-name', required='')
+          li
+            label Train Running Days
+            ol
+              // <input type="hidden" name="day" value="0" />
+              li
+                input#sunday(type='checkbox', checked='', name='day', value='1')
+                label(for='sunday') Sunday
+              li
+                input#monday(type='checkbox', checked='', name='day', value='2')
+                label(for='monday') Monday
+              li
+                input#tuesday(type='checkbox', checked='', name='day', value='3')
+                label(for='tuesday') Tuesday
+              li
+                input#wednesday(type='checkbox', checked='', name='day', value='4')
+                label(for='wednesday') Wednesday
+              li
+                input#thursday(type='checkbox', checked='', name='day', value='5')
+                label(for='thursday') Thursday
+              li
+                input#friday(type='checkbox', checked='', name='day', value='6')
+                label(for='friday') Friday
+              li
+                input#saturday(type='checkbox', checked='', name='day', value='7')
+                label(for='saturday') Saturday
+          li
+            label Has Class types : 
+            ol#class-type
+          li
+            label(for='train-type') Train Type
+            select#train-type(name='train-type')
+          li
+            label(for='return-train-entry')
+              | Also create return train entry :
+            input#return-train-entry(type='checkbox', name='return-train-entry', value='true')
+          button(type='reset', form='train-add-form') Reset
+          button(type='submit') Submit
+  

@@ -1,0 +1,72 @@
+extends agentLayout
+
+block stylesheets 
+  link(rel='stylesheet', href='/stylesheets/agent-styles.css')
+  link(rel='stylesheet', href='/stylesheets/train-timetable-input.css')
+
+block scripts
+  script(src='/javascripts/train-timetable-input.js', defer)
+
+
+block mainContent
+  .main-content
+    section#search-train
+      #train-search-form.input-container(name='train-search-form')
+        // action="http://localhost:3000/agent/state/"
+        label(for='search-text') Search Train : 
+        input#search-text(type='text', max='30', required='', name='search-text')
+        button#search-btn(type='button', onclick='searchTrain()')
+          | Search
+    section#train-data-container.train-data-container(hidden='')
+      table#train-table
+        thead
+          tr
+            td Train No
+            td Return Train No
+            td Train Name
+            td Runs On
+            td Train Type
+            td Has Classes
+            td Timetable
+        tbody
+    // method="POST"
+    form#train-timetable-form.input-container(name='train-timetable-form', onchange='calculateSrNo()', action='/agent/train-timetable/update', hidden='')
+      input#train-id(type='hidden', name='train-id', value='-1')
+      // <input type="hidden" id="train-id" name="train-id" value="13" />
+      datalist#station-list
+        option(value='ABC')
+        option(value='PQR')
+        option(value='XYZ')
+        option(value='LMN')
+      .form-input-row-container
+        .input-container-row
+          .form-input-row-head
+            .form-head-child Sr. No.
+            .form-head-child Station Code
+            .form-head-child Arrival Time
+            .form-head-child Departure time
+            .form-head-child Day
+            .form-head-child Platform Number
+            .form-head-child Distance Traveled
+          #add-new-field-permanent.add-new-field(onclick='addNewInputFormRow(this)')
+            img(src='/images/add-button.png')
+      button#submit-btn(type='submit') Submit
+      template  
+        .form-input-row
+          input.number-input(type='text', name='sr-no', readonly='', disabled='')
+          input(type='text', maxlength='30', name='station-code', required='', oninput='handleStationList(this)', list='station-list', autocomplete='off')
+          input(type='time', name='arrival-time')
+          input(type='time', name='departure-time')
+          input.number-input(type='number',step="any", name='day', max='5', min='0', required='')
+          input.number-input(type='number',step="any", name='platform', min='0')
+          input.number-input(type='number',step="any", name='distance-traveled', min='0')
+          img(src='/images/dustbin.png', onclick='deleteInputFormRow(this)')
+          .add-new-field(onclick='addNewInputFormRow(this)')
+            img(src='/images/add-button.png')
+      //
+        <input
+        type="submit"
+        value="Submit"
+        name="submit"
+        onClick="return confirmSubmit()"
+        />

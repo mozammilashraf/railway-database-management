@@ -1,0 +1,42 @@
+.train-timetable-input {
+  color: #1967d2;
+  background-color: #e8f0fe;
+}
+.form-input-row-head {
+  display: grid;
+  height: 35px;
+  grid-template-columns: 0.5fr repeat(3, 2fr) 0.5fr 1fr 1fr 0.5fr;
+  row-gap: 5px;
+}
+.form-input-row {
+  display: grid;
+  height: 60px;
+  /* margin-bottom: 10px; */
+  grid-template-columns: 0.5fr repeat(3, 2fr) 0.5fr 1fr 1fr 0.5fr;
+  padding-bottom: 5px;
+}
+
+.number-input {
+  width: 50%;
+}
+
+.add-new-field {
+  margin-left: 10px;
+  height: 25px;
+  width: 25px;
+}
+table {
+  margin: 20px auto;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid #000;
+}
+
+th,
+td {
+  padding: 5px;
+}

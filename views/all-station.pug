@@ -1,0 +1,24 @@
+extends agent-home
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/display-data.css')
+
+
+block scripts
+  script(src="/javascripts/display-data.js" defer)
+
+block mainContent
+  +agentSidebar
+  .station-table-container
+    table#staion-table
+      thead 
+        th Station Code
+        th Station Name
+        th State
+        th Zone
+        th Delete
+        th Edit
+      tbody 
+      //- each d in data
+      //-   p= ` ${d.station_code} -- ${d.station_name} -- ${d.state} -- ${d.zone} ` 
+    
